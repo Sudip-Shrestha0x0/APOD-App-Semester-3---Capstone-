@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stellar View: NASA's APOD Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌌</text></svg>">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <h1 class="logo">🌌Stellar View</h1>
+            </div>
+            <div class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" data-page="home">Home</a>
+                <a href="#favorites" class="nav-link" data-page="favorites">Favorites</a>
+                <a href="#about" class="nav-link" data-page="about">About</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Page -->
+        <section id="home" class="page active">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="container">
+                    <form class="search-form" id="searchForm">
+                        <label for="dateInput" class="search-label">Select Date:</label>
+                        <input type="date" id="dateInput" class="date-input" required>
+                        <button type="submit" class="search-btn" id="searchBtn">
+                            <span class="btn-icon">🔍</span>
+                            <span class="btn-text">Search APOD</span>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Loading Indicator -->
+            <div class="loading" id="loading">
+                <div class="loading-spinner"></div>
+                <p>Fetching cosmic wonders...</p>
+            </div>
+
+            <!-- Error Message -->
+            <div class="error-message" id="errorMessage">
+                <div class="error-content">
+                    <span class="error-icon">⚠️</span>
+                    <h3>Oops! Something went wrong</h3>
+                    <p id="errorText">Please try again or select a different date.</p>
+                    <button class="retry-btn" id="retryBtn">Try Again</button>
+                </div>
+            </div>
+
+            <!-- APOD Display Section -->
+            <section class="apod-section" id="apodSection">
+                <div class="container">
+                    <div class="apod-content">
+                        <div class="image-container">
+                            <img id="apodImage" class="apod-image" alt="Astronomy Picture of the Day">
+                        </div>
+                        <div class="info-panel">
+                            <div class="info-content">
+                                <h2 id="apodTitle" class="apod-title">Cosmic Web of Galaxy Formation</h2>
+                                <p id="apodDate" class="apod-date">May 23, 2025</p>
+                                <div class="description-container">
+                                    <p id="apodDescription" class="apod-description">
+                                        Select a date and search to discover NASA's astronomy picture of the day with detailed explanations from astronomers and space scientists.
+                                    </p>
+                                </div>
+                                <button class="favorite-btn" id="favoriteBtn" title="Add to Favorites">
+                                    <span class="star-icon">⭐</span>
+                                    <span class="btn-text">Add to Favorites</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- My Favorites Collection Section (on Home Page) -->
+            <section class="home-favorites-section" id="homeFavoritesSection">
+                <div class="container">
+                    <h2 class="favorites-title">My Favorites Collection</h2>
+                    <div class="home-favorites-grid" id="homeFavoritesGrid">
+                        <div class="empty-home-favorites">
+                            <div class="empty-icon">🌌</div>
+                            <h3>No favorites yet</h3>
+                            <p>Start exploring and add your favorite cosmic discoveries!</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Favorites Page -->
+        <section id="favorites" class="page">
+            <div class="container">
+                <div class="page-header">
+                    <h2 class="page-title">My Favorite Cosmic Discoveries</h2>
+                    <p class="page-subtitle">Your collection of amazing astronomical images</p>
+                </div>
+                
+                <div class="favorites-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" id="favoritesCount">0</span>
+                        <span class="stat-label">Saved Images</span>
+                    </div>
+                    <div class="favorites-actions">
+                        <button class="clear-all-btn" id="clearAllBtn">
+                            🗑️ Clear All
+                        </button>
+                    </div>
+                </div>
+
+                <div class="favorites-grid" id="favoritesGrid">
+                    <div class="empty-favorites">
+                        <div class="empty-icon">🌌</div>
+                        <h3>No favorites yet</h3>
+                        <p>Start exploring and add your favorite cosmic discoveries!</p>
+                        <button class="explore-btn" id="exploreBtn">
+                            🚀 Start Exploring
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Page -->
+        <section id="about" class="page">
+            <div class="container">
+                <div class="about-hero">
+                    <h2 class="page-title">About Stellar View</h2>
+                    <p class="about-intro">
+                        Discover the wonders of our universe through NASA's daily astronomical treasures
+                    </p>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-section">
+                        <div class="about-text">
+                            <h3>🌟 Our Mission</h3>
+                            <p>
+                                Stellar View provides an intuitive and beautiful way to explore NASA's Astronomy Picture of the Day (APOD) archive. Our mission is to make cosmic discoveries accessible to everyone, from astronomy enthusiasts to curious minds seeking to understand our universe.
+                            </p>
+                        </div>
+                        <div class="about-image">
+                            <div class="placeholder-image">🌌</div>
+                        </div>
+                    </div>
+
+                    <div class="about-section reverse">
+                        <div class="about-text">
+                            <h3>🔭 What is APOD?</h3>
+                            <p>
+                                The Astronomy Picture of the Day is one of the most popular websites at NASA. Each day, a different image or photograph of our fascinating universe is featured, along with a brief explanation written by a professional astronomer. The archive dates back to 1995 and contains thousands of spectacular images.
+                            </p>
+                        </div>
+                        <div class="about-image">
+                            <div class="placeholder-image">🚀</div>
+                        </div>
+                    </div>
+
+                    <div class="about-section">
+                        <div class="about-text">
+                            <h3>✨ Features</h3>
+                            <ul class="features-list">
+                                <li>🗓️ <strong>Date Selection:</strong> Browse any date from NASA's extensive archive</li>
+                                <li>⭐ <strong>Favorites System:</strong> Save and organize your favorite cosmic discoveries</li>
+                                <li>📱 <strong>Responsive Design:</strong> Perfect viewing experience on any device</li>
+                                <li>🔍 <strong>High-Quality Images:</strong> Access to NASA's high-resolution astronomical photography</li>
+                                <li>📚 <strong>Educational Content:</strong> Detailed explanations from professional astronomers</li>
+                            </ul>
+                        </div>
+                        <div class="about-image">
+                            <div class="placeholder-image">🪐</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="credits-section">
+                    <h3>🙏 Credits & Acknowledgments</h3>
+                    <div class="credits-grid">
+                        <div class="credit-item">
+                            <h4>NASA APOD</h4>
+                            <p>Images and descriptions provided by NASA's Astronomy Picture of the Day</p>
+                            <a href="https://apod.nasa.gov/" target="_blank" rel="noopener">Visit APOD →</a>
+                        </div>
+                        <div class="credit-item">
+                            <h4>NASA Open Data</h4>
+                            <p>This application uses NASA's open data APIs to bring you the latest cosmic discoveries</p>
+                            <a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA APIs →</a>
+                        </div>
+                        <div class="credit-item">
+                            <h4>Development</h4>
+                            <p>Created as part of the MTM6302 Interactive Media Design program</p>
+                            <p><strong>Developer:</strong> Sudip Shrestha</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h3>📬 Get in Touch</h3>
+                    <p>Have suggestions or found an issue? We'd love to hear from you!</p>
+                    <div class="contact-links">
+                        <a href="mailto:shre0032@algonquinlive.com" class="contact-link">
+                            📧 Email Us
+                        </a>
+                        <a href="https://github.com/Sudip-sasquash0x01" class="contact-link" target="_blank" rel="noopener">
+                            💻 GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>🌌 Stellar View</h4>
+                    <p>Exploring the cosmos, one picture at a time.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <div class="footer-links">
+                        <a href="#home" data-page="home">Home</a>
+                        <a href="#favorites" data-page="favorites">Favorites</a>
+                        <a href="#about" data-page="about">About</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <a href="https://apod.nasa.gov/" target="_blank" rel="noopener">NASA APOD</a>
+                    <a href="https://api.nasa.gov/" target="_blank" rel="noopener">NASA APIs</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Stellar View. Educational project using NASA's open data.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span class="toast-icon"></span>
+        <span class="toast-message"></span>
+        <button class="toast-close" id="toastClose">&times;</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
