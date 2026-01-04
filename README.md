@@ -25,9 +25,9 @@ A responsive web app for exploring NASA's Astronomy Picture of the Day (APOD). S
 Note: The app handles API errors gracefully, but if you hit rate limits, use your personal key.
 
 ## Demo
-[Live Demo Link] (https://gorgeous-meerkat-b30e06.netlify.app/)
+[Live Demo](https://gorgeous-meerkat-b30e06.netlify.app/)
 
-![Screenshot of Home Page](./APOD_Mockup.pdf)  
+![Lo-fi Wireframe](./images/apod-wireframe.svg)  
 
 ## Why This Project?
 This app demonstrates my ability to build clean, maintainable code from wireframes to production. I focused on performance (lazy loading, efficient DOM updates), accessibility, and user experience. Challenges like API rate limiting and responsive navigation were solved with modern best practices.
